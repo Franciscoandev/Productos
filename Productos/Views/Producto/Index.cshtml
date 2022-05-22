@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Productos.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Producto</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Guardar", null, new { @class = "btn btn-success" })
+</p>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <font color="green">@ViewBag.mensaje</font>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriaID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoriaID)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Modificar", new { id = item.ID }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("ver", "Detalle", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Borrar", "Eliminar", new { id = item.ID }, new { @class = "btn btn-warning" })
+            </td>
+        </tr>
+    }
+
+</table>
